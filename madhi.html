@@ -1,0 +1,505 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Madhivadhani | CSE Student & Developer</title>
+    <!-- FontAwesome Icons for Social/Coding Logos -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <style>
+        /* Base Styling */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            background-color: #0b132b;
+            color: #e0e1dd;
+            line-height: 1.6;
+        }
+
+        /* Navigation Bar */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(11, 19, 43, 0.95);
+            backdrop-filter: blur(10px);
+            padding: 1.2rem 8%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 1000;
+            border-bottom: 1px solid #1c2541;
+        }
+
+        nav .logo {
+            font-size: 1.4rem;
+            font-weight: 700;
+            color: #64dfdf;
+            text-decoration: none;
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 20px;
+        }
+
+        nav a {
+            color: #8d99ae;
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+
+        nav a:hover {
+            color: #64dfdf;
+        }
+
+        /* Sections */
+        section {
+            padding: 110px 8% 70px;
+            min-height: 80vh;
+        }
+
+        .section-title {
+            font-size: 2rem;
+            color: #64dfdf;
+            margin-bottom: 25px;
+            position: relative;
+            display: inline-block;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -8px;
+            left: 0;
+            width: 50%;
+            height: 3px;
+            background-color: #5bc0be;
+            border-radius: 2px;
+        }
+
+        /* Hero Section */
+        #hero {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: flex-start;
+            min-height: 100vh;
+        }
+
+        .badge {
+            background: rgba(100, 223, 223, 0.1);
+            color: #64dfdf;
+            padding: 6px 14px;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            margin-bottom: 20px;
+            border: 1px solid rgba(100, 223, 223, 0.3);
+        }
+
+        #hero h1 {
+            font-size: 3.2rem;
+            margin-bottom: 15px;
+            color: #ffffff;
+        }
+
+        #hero h1 span {
+            color: #64dfdf;
+        }
+
+        #hero p {
+            font-size: 1.2rem;
+            color: #a0aec0;
+            max-width: 650px;
+            margin-bottom: 25px;
+        }
+
+        .hero-btns {
+            display: flex;
+            gap: 15px;
+            flex-wrap: wrap;
+            margin-bottom: 25px;
+        }
+
+        .btn {
+            display: inline-block;
+            background-color: #64dfdf;
+            color: #0b132b;
+            padding: 12px 28px;
+            border-radius: 6px;
+            font-weight: 600;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+
+        .btn:hover {
+            background-color: #48cae4;
+            transform: translateY(-2px);
+        }
+
+        .btn-outline {
+            background-color: transparent;
+            color: #64dfdf;
+            border: 2px solid #64dfdf;
+        }
+
+        .btn-outline:hover {
+            background-color: rgba(100, 223, 223, 0.1);
+            color: #ffffff;
+        }
+
+        /* Social Icon Links in Hero */
+        .social-icons {
+            display: flex;
+            gap: 18px;
+        }
+
+        .social-icons a {
+            color: #a0aec0;
+            font-size: 1.5rem;
+            transition: color 0.3s, transform 0.2s;
+        }
+
+        .social-icons a:hover {
+            color: #64dfdf;
+            transform: translateY(-3px);
+        }
+
+        /* Cards Layout */
+        .grid-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 25px;
+            margin-top: 25px;
+        }
+
+        .card {
+            background-color: #1c2541;
+            padding: 28px;
+            border-radius: 10px;
+            border: 1px solid #2a3759;
+            transition: transform 0.3s, border-color 0.3s;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            border-color: #64dfdf;
+        }
+
+        .card h3 {
+            color: #ffffff;
+            font-size: 1.3rem;
+            margin-bottom: 12px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .card p {
+            color: #a0aec0;
+            font-size: 0.95rem;
+            margin-bottom: 15px;
+        }
+
+        /* Profile Cards styling */
+        .profile-card {
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .profile-card .profile-link {
+            color: #64dfdf;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.95rem;
+            display: inline-flex;
+            align-items: center;
+            gap: 5px;
+            margin-top: 10px;
+            transition: gap 0.2s;
+        }
+
+        .profile-card .profile-link:hover {
+            gap: 10px;
+        }
+
+        /* Skill Tags */
+        .skill-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-top: 10px;
+        }
+
+        .tag {
+            background-color: #0b132b;
+            color: #64dfdf;
+            padding: 5px 12px;
+            border-radius: 4px;
+            font-size: 0.85rem;
+            border: 1px solid #2a3759;
+        }
+
+        /* Education Card */
+        .edu-card {
+            background-color: #1c2541;
+            padding: 30px;
+            border-radius: 10px;
+            border-left: 4px solid #64dfdf;
+        }
+
+        .edu-card h3 {
+            color: #fff;
+            font-size: 1.4rem;
+        }
+
+        .edu-card .institution {
+            color: #64dfdf;
+            font-weight: 600;
+            margin: 5px 0 10px;
+        }
+
+        .edu-card .year {
+            color: #8d99ae;
+            font-size: 0.9rem;
+        }
+
+        /* Contact Section */
+        .contact-box {
+            max-width: 600px;
+            background-color: #1c2541;
+            padding: 30px;
+            border-radius: 10px;
+            border: 1px solid #2a3759;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            color: #a0aec0;
+            font-size: 0.9rem;
+        }
+
+        .form-group input, .form-group textarea {
+            width: 100%;
+            padding: 12px;
+            background-color: #0b132b;
+            border: 1px solid #2a3759;
+            border-radius: 6px;
+            color: #ffffff;
+            font-size: 1rem;
+        }
+
+        .form-group input:focus, .form-group textarea:focus {
+            outline: none;
+            border-color: #64dfdf;
+        }
+
+        /* Footer */
+        footer {
+            text-align: center;
+            padding: 25px;
+            background-color: #080e20;
+            color: #8d99ae;
+            font-size: 0.9rem;
+            border-top: 1px solid #1c2541;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Navigation -->
+    <nav>
+        <a href="#hero" class="logo">Madhivadhani</a>
+        <ul>
+            <li><a href="#about">About</a></li>
+            <li><a href="#education">Education</a></li>
+            <li><a href="#profiles">Profiles</a></li>
+            <li><a href="#skills">Skills</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="hero">
+        <span class="badge">1st Year CSE Student</span>
+        <h1>Hello, I'm <span>Madhivadhani</span></h1>
+        <p>First-Year Computer Science & Engineering student at M. Kumaraswamy College of Engineering. Learning C programming, web development, and algorithmic logic.</p>
+
+        <div class="hero-btns">
+            <a href="#contact" class="btn">Get In Touch</a>
+            <a href="#profiles" class="btn btn-outline">View My Profiles</a>
+        </div>
+
+        <!-- Quick Social Links -->
+        <div class="social-icons">
+            <a href="https://linkedin.com/in/your-username" target="_blank" title="LinkedIn"><i class="fab fa-linkedin"></i></a>
+            <a href="https://github.com/your-username" target="_blank" title="GitHub"><i class="fab fa-github"></i></a>
+            <a href="https://leetcode.com/your-username" target="_blank" title="LeetCode"><i class="fas fa-code"></i></a>
+            <a href="https://hackerrank.com/your-username" target="_blank" title="HackerRank"><i class="fab fa-hackerrank"></i></a>
+            <a href="https://coursera.org" target="_blank" title="Coursera"><i class="fas fa-graduation-cap"></i></a>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about">
+        <h2 class="section-title">About Me</h2>
+        <p style="max-width: 800px; color: #a0aec0; font-size: 1.1rem; margin-top: 15px;">
+            I am a first-year Computer Science Engineering student passionate about programming and building web applications. 
+            I am strengthening my problem-solving skills with <strong>C Language</strong> and creating modern user interfaces using <strong>HTML5 & CSS3</strong>. I actively practice coding across various platforms like HackerRank and LeetCode to continuously expand my skills.
+        </p>
+    </section>
+
+    <!-- Education Section -->
+    <section id="education">
+        <h2 class="section-title">Education</h2>
+        <div style="margin-top: 20px;">
+            <div class="edu-card">
+                <h3>B.E. Computer Science and Engineering</h3>
+                <p class="institution">M. Kumaraswamy College of Engineering</p>
+                <p class="year">1st Year | Pursuing</p>
+                <p style="color: #a0aec0; margin-top: 10px; font-size: 0.95rem;">
+                    Focusing on core computer science foundations, engineering mathematics, C programming logic, and web design.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Coding & Learning Profiles Section -->
+    <section id="profiles">
+        <h2 class="section-title">Coding & Learning Profiles</h2>
+        <p style="color: #a0aec0; margin-bottom: 10px;">Connect with me and track my learning progress across these platforms:</p>
+        
+        <div class="grid-container">
+<a href="https://www.codechef.com/users/herd_book_24" target="_blank">
+    View My CodeChef
+</a>
+            <!-- LinkedIn -->
+            <div class="card profile-card">
+                <div>
+                    <h3><i class="fab fa-linkedin" style="color: #0a66c2;"></i> LinkedIn</h3>
+                    <p>My professional network and career profile.</p>
+                </div>
+                <!-- Replace 'your-username' below with your actual profile link -->
+                <a href="https://www.linkedin.com/in/madhi-vathani-815602432/" target="_blank" class="profile-link">View Profile <i class="fas fa-arrow-right"></i></a>
+
+
+            </div>
+
+            <!-- GitHub -->
+            <div class="card profile-card">
+                <div>
+                    <h3><i class="fab fa-github" style="color: #ffffff;"></i> GitHub</h3>
+                    <p>Repository for my web code, projects, and learning materials.</p>
+                </div>
+                <!-- Replace 'your-username' below with your actual profile link -->
+                <a href="https://github.com/Madhi-CSE" target="_blank" class="profile-link">View Repositories <i class="fas fa-arrow-right"></i></a>
+            </div>
+
+            <!-- LeetCode -->
+            <div class="card profile-card">
+                <div>
+                    <h3><i class="fas fa-code" style="color: #ffa116;"></i> LeetCode</h3>
+                    <p>Practicing Data Structures and algorithmic problem solving.</p>
+                </div>
+                <!-- Replace 'your-username' below with your actual profile link -->
+                <a href="https://leetcode.com/u/Madhi_CSE/" target="_blank" class="profile-link">View Profile <i class="fas fa-arrow-right"></i></a>
+            </div>
+
+            <!-- HackerRank -->
+            <div class="card profile-card">
+                <div>
+                    <h3><i class="fab fa-hackerrank" style="color: #2ec866;"></i> HackerRank</h3>
+                    <p>Solving C language challenges and earning problem-solving badges.</p>
+                </div>
+                <!-- Replace 'your-username' below with your actual profile link -->
+                <a href="https://www.hackerrank.com/profile/madhib1512" target="_blank" class="profile-link">View Profile <i class="fas fa-arrow-right"></i></a>
+            </div>
+
+            <
+        </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section id="skills">
+        <h2 class="section-title">Skills & Competencies</h2>
+        <div class="grid-container">
+            <div class="card">
+                <h3>C Programming</h3>
+                <p>Learning foundational syntax, control structures, loops, arrays, and algorithms.</p>
+                <div class="skill-list">
+                    <span class="tag">C Language</span>
+                    <span class="tag">Logic Building</span>
+                    <span class="tag">Algorithms</span>
+                </div>
+            </div>
+
+            <div class="card">
+                <h3>Web Development</h3>
+                <p>Designing modern, responsive websites with clean semantic code.</p>
+                <div class="skill-list">
+                    <span class="tag">HTML5</span>
+                    <span class="tag">CSS3</span>
+                    <span class="tag">Responsive Design</span>
+                </div>
+            </div>
+
+            <div class="card">
+                <h3>Tools & Editors</h3>
+                <p>Using code editors and modern platforms to build and deploy projects.</p>
+                <div class="skill-list">
+                    <span class="tag">VS Code</span>
+                    <span class="tag">Notepad</span>
+                    <span class="tag">GitHub</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact">
+        <h2 class="section-title">Contact Me</h2>
+        <div class="contact-box" style="margin-top: 20px;">
+            <p style="color: #a0aec0; margin-bottom: 20px;">Feel free to reach out to me for academic collaborations or connections!</p>
+            <form action="mailto:your-email@example.com" method="post" enctype="text/plain">
+                <div class="form-group">
+                    <label for="name">Your Name</label>
+                    <input type="text" id="name" name="name" placeholder="Enter your name" required>
+                </div>
+                <div class="form-group">
+                    <label for="email">Your Email</label>
+                    <input type="email" id="email" name="email" placeholder="Enter your email" required>
+                </div>
+                <div class="form-group">
+                    <label for="message">Message</label>
+                    <textarea id="message" name="message" rows="4" placeholder="Enter your message" required></textarea>
+                </div>
+                <button type="submit" class="btn" style="border: none; cursor: pointer; width: 100%;">Send Message</button>
+            </form>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <p>© 2026 MADHIVATHANI.B | M. Kumaraswamy College of Engineering,thalavapalayam,karur,pincode-639119</p>
+    </footer>
+
+</body>
+</html>
